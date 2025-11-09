@@ -1,13 +1,20 @@
 {
   "name": "Playground",
   "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-24.04",
+    "containerEnv": {
+    "DISPLAY": "host.docker.internal:0.0"
+  },
+  "runArgs": [
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-vscode.cpptools-extension-pack",
         "ms-azuretools.vscode-docker",
         "eamodio.gitlens",
-        "matepek.vscode-catch2-test-adapter"
+        "matepek.vscode-catch2-test-adapter",
+        "shd101wyy.markdown-preview-enhanced"
       ],
       "settings": {
         "cmake.generator": "Ninja",
@@ -17,6 +24,6 @@
       }
     }
   },
-  "postCreateCommand": "chmod +x .devcontainer/setup_env.sh && .devcontainer/setup_env.sh",
+  "postCreateCommand": "git update-index --skip-worktree .devcontainer/setup_env.sh && chmod +x .devcontainer/setup_env.sh && .devcontainer/setup_env.sh",
   "remoteUser": "vscode"
 }
