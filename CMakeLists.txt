@@ -19,6 +19,8 @@ set(CONAN_CMD
     --output-folder "${CONAN_OUTPUT_DIR}"
     --build=missing
     -s build_type=${CMAKE_BUILD_TYPE}
+    -c tools.system.package_manager:mode=install
+    -c tools.system.package_manager:sudo=True
 )
 
 message(STATUS "Running Conan install: ${CONAN_CMD}")
@@ -51,3 +53,4 @@ endif()
 # Add subdirectories
 # -------------------------
 add_subdirectory(experiments/000_env_check)
+add_subdirectory(experiments/001_glfw_window_in_container)
